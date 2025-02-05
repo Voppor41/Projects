@@ -1,5 +1,5 @@
 """
-URL configuration for Social_network project.
+URL configuration for Cybersport_team project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.1/topics/http/urls/
