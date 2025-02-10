@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Главная{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    {% include "html-templates/menu.html" %}  <!-- Вставляем меню -->
+
+    <main>
+      {% block content %}
+      {% endblock %}
+    </main>
+
+    <footer>
+        <h4>Контакты 2025</h4>
+    </footer>
+</body>
+</html>
