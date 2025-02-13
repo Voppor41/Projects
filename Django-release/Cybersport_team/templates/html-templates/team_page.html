@@ -1,0 +1,13 @@
+{% extends "html-templates/base.html" %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/team_page.css' %}">
+{% block title %} о клубе {% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/team_page.css' %}">
+    <div class="content">
+        <a href="{% url 'dota_page' %}"><h3>{{ dota }}</h3></a>
+        <p></p>
+        <a href="{% url 'dota_page' %}"><h3>{{ cs2 }}</h3></a>
+    </div>
+{% endblock %}
