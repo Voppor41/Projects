@@ -1,4 +1,9 @@
 from django.shortcuts import render
+from .serializers import *
+from rest_framework import status, generics
+from rest_framework.response import Response
+from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework.permissions import AllowAny
 
 # Create your views here.
 
@@ -22,3 +27,20 @@ def club_page(request):
 
 def team_page(request):
     return render(request, "html-templates/team_page.html", menu())
+
+class RegisterView(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = (AllowAny, )
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
+        user.set_password(serializer.validated_data['password'])
+        user.save()
+        refresh = RefreshToken.for_user(user)
+        return Response({
+            'refresh': str(refresh),
+            'access': str(refresh.access_token),
+        }, status=status.HTTP_201_CREATED)

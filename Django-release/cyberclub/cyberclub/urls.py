@@ -14,13 +14,19 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from tkinter.font import names
+
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from logic.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', main_page, name='main_page'),
     path('club_page/', club_page, name='club_page'),
-    path('team_page/', team_page, name='team_page')
+    path('team_page/', team_page, name='team_page'),
+    path('register/', RegisterView.as_view(), name='register'),
+    path('login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('refresh/', TokenRefreshView.as_view(), name='token_refresh')
 ]

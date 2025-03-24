@@ -40,9 +40,9 @@ footer {
     display: flex;
     flex-direction: column; /* Элементы в колонку */
     align-items: center; /* Выравнивание по центру */
-    width: 60px; /* Фиксированная ширина */
+    width: 80px; /* Фиксированная ширина */
     background-color: #9411c4; /* Цвет фона */
-    padding: 40px 0;
+    padding: 20px 0;
 }
 
 .menu a {
@@ -59,4 +59,3 @@ footer {
     margin-top: auto; /* Прижимаем к низу */
     padding-bottom: 10px;
 }
-
