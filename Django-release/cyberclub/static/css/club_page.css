@@ -14,30 +14,8 @@ h2 {
 
 h3 {
     font-size: 18px;
-    color: #333;
+    color: #000000;
     text-align: justify;
 }
 
-.menu {
-    display: flex;
-    flex-direction: column; /* Элементы в колонку */
-    align-items: center; /* Выравнивание по центру */
-    width: 80px; /* Фиксированная ширина */
-    background-color: #9411c4; /* Цвет фона */
-    padding: 20px 0;
-}
 
-.menu a {
-    writing-mode: vertical-rl; /* Вертикальный текст */
-    text-align: center;
-    margin-bottom: 20px; /* Отступ между пунктами */
-    font-weight: bold;
-    text-decoration: none;
-    color: black;
-}
-
-.menu img {
-    width: 40px; /* Размер логотипа */
-    margin-top: auto; /* Прижимаем к низу */
-    padding-bottom: 10px;
-}
