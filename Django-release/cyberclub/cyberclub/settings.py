@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'logic.apps.LogicConfig',
+    'frontend',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
