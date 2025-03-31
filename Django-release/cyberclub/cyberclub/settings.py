@@ -28,7 +28,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'logic.apps.LogicConfig',
-    'frontend',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -80,7 +79,7 @@ WSGI_APPLICATION = 'cyberclub.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': "users",
+        'NAME': "cyberclub_db",
         'USER': "postgres",
         'PASSWORD': "123456789",
         'HOST': "localhost",
@@ -150,6 +149,9 @@ AUTH_USER_MODEL = 'auth.User'
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
     ),
 }
 

@@ -9,6 +9,11 @@
 <body>
     {% include "html-templates/menu.html" %}  <!-- Вставляем меню -->
 
+    <header>
+        {% block head %}
+        {% endblock %}
+    </header>
+
     <main>
       {% block content %}
       {% endblock %}

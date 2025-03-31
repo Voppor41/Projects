@@ -1,10 +1,10 @@
 from django.db import models
 
 # Create your models here.
-class User(models.Model):
+class Users(models.Model):
     username = models.CharField(max_length=20)
     password = models.CharField()
-    age = models.IntegerField()
+    age = models.IntegerField(blank=True)
     email = models.EmailField(unique=True, default="default@example.com")
 
 class News(models.Model):

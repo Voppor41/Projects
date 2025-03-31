@@ -18,7 +18,7 @@ async function registerUser() {
         localStorage.setItem("access", data.access);
         localStorage.setItem("refresh", data.refresh);
         alert("Вы успешно зарегистрировались!");
-        window.location.href = "/login/";
+        window.location.href = "/";
     } else {
         errorMessage.textContent = data.detail || "Ошибка регистрации";
     }

@@ -25,6 +25,13 @@ nav a {
     margin: 10px 0;
 }
 
+header {
+    position: fixed;
+    right: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #000000;
+}
 
 /* Размещаем "Контакты 2025" внизу справа */
 footer {
@@ -33,7 +40,7 @@ footer {
     bottom: 10px;
     font-size: 16px;
     font-weight: bold;
-    color: black;
+    color: #000000;
 }
 
 
@@ -41,7 +48,7 @@ footer {
     display: flex !important;
     flex-direction: column !important; /* Элементы в колонку */
     align-items: center !important; /* Выравнивание по центру */
-    width: 80px !important; /* Фиксированная ширина */
+    width: 60px !important; /* Фиксированная ширина */
     background-color: #a804dd !important; /* Цвет фона */
     padding: 20px 0 !important;
 }
