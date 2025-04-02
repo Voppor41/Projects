@@ -1,0 +1,7 @@
+{% extends "html-templates/base.html" %}
+
+{% block content %}
+    <h2>Привет, {{ user.username }}!</h2>
+    <p>Это твой личный профиль.</p>
+    <a href="{% url 'logout_page' %}">Выйти</a>
+{% endblock %}

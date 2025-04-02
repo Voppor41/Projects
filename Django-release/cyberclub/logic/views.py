@@ -1,11 +1,13 @@
 from allauth.socialaccount.providers.dummy.views import authenticate
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login, logout
 from .serializers import *
 from rest_framework import status, generics, views
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import AllowAny, IsAuthenticated
-from.models import Users
+
 
 
 # Create your views here.
@@ -43,8 +45,20 @@ def register_page(request):
 def login_page(request):
     return render(request, 'html-templates/login.html')
 
+@login_required
+def profile_page(request):
+    return render(request, 'html-templates/profile.html', {"user": request.user})
+
+def logout_page(request):
+    return render(request, 'html-templates/logout.html')
+
+def logout_view(request):
+    logout(request)
+    return redirect('main_page')
+
+
 class RegisterView(generics.CreateAPIView):
-    queryset = Users.objects.all()
+    queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = (AllowAny, )
 
@@ -75,10 +89,12 @@ class LoginView(views.APIView):
 
         if user:
             refresh = RefreshToken.for_user(user)
+            login(request, user)
             return Response({
                 "message": "Login successful",
                 "access": str(refresh.access_token),
                 "refresh": str(refresh),
+                "profile_url": "profile/"
             }, status=status.HTTP_200_OK)
 
         return Response({"detail": "Неверные учетные данные"}, status=status.HTTP_401_UNAUTHORIZED)

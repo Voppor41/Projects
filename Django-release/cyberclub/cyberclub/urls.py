@@ -14,11 +14,13 @@ urlpatterns = [
     path('team_page/', team_page, name='team_page'),
     path('dota_page/', cs2_page, name='dota_page'),
     path('cs2_page/', cs2_page, name='cs2_page'),
-    path('register/', register_page, name='register_page'),  # HTML-страница регистрации
+    path('register/', register_page, name='register_page'),
     path('login/', login_page, name='login_page'),
+    path('profile/', profile_page, name='profile'),
+    path('logout/', logout_view, name='logout_page'),
 
     # API маршруты
-    path('api/register/', RegisterView.as_view(), name='register_api'),  # Маршрут для API регистрации
+    path('api/register/', RegisterView.as_view(), name='register_api'),
     path('api/login/', LoginView.as_view(), name='login'),
     path('api/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]

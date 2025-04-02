@@ -5,4 +5,15 @@
     <a href="{% url 'team_page' %}"><h3>{{ team }}</h3></a>
     <a href="http://127.0.0.1:8000/blog_page"><h3>{{ blog }}</h3></a>
     <img src="{% static 'images/logo.jpg' %}" alt="Логотип">
+
+   <div class="auth-buttons">
+        {% if user.is_authenticated %}
+            <a href="{% url 'profile' %}">Личный профиль</a>
+            <a href="{% url 'logout_page' %}">Выйти</a>
+        {% else %}
+            <a href="{% url 'login_page' %}">Войти</a>
+            <a href="{% url 'register_page' %}">Регистрация</a>
+        {% endif %}
+    </div>
+
 </nav>

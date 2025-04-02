@@ -68,3 +68,23 @@ footer {
     padding-bottom: 10px;
 }
 
+.auth-buttons {
+    position: fixed;
+    top: 10px;
+    right: 40px;
+}
+
+.auth-buttons a {
+    text-decoration: none;
+    writing-mode: horizontal-tb;
+    margin-left: 10px;
+    padding: 8px 12px;
+    background-color: #a804dd;
+    color: #000000;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.auth-buttons a:hover {
+    background-color: #a804dd;
+}
