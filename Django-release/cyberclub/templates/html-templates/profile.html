@@ -1,7 +1,45 @@
-{% extends "html-templates/base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Личный профиль</title>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+</head>
+<body>
+<div class="profile-container">
+    <h2>Личный профиль</h2>
 
-{% block content %}
-    <h2>Привет, {{ user.username }}!</h2>
-    <p>Это твой личный профиль.</p>
-    <a href="{% url 'logout_page' %}">Выйти</a>
-{% endblock %}
+    <form method="POST" enctype="multipart/form-data" class="profile-form">
+        {% csrf_token %}
+
+        <div class="avatar-section">
+            <img src="{{ user.profile.avatar.url }}" alt="Avatar" class="avatar-img">
+            <input type="file" name="avatar" accept="image/*">
+        </div>
+
+        <div class="form-group">
+            <label for="username">Имя:</label>
+            <input type="text" name="username" id="username" value="{{ user.username }}">
+        </div>
+
+        <div class="form-group">
+            <label for="age">Возраст:</label>
+            <input type="number" name="age" id="age" value="{{ user.profile.age }}">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" value="{{ user.email }}">
+        </div>
+
+        <div class="form-group">
+            <label for="password">Пароль:</label>
+            <input type="password" name="password" id="password">
+        </div>
+
+        <button type="submit" class="save-btn">Сохранить изменения</button>
+    </form>
+</div>
+</body>
+</html>

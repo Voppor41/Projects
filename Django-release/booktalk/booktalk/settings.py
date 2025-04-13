@@ -29,7 +29,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'books',
     'reviews',
-    'users'
+    'users',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'djoser',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -144,6 +148,13 @@ SIMPLE_JWT = {
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),  # Срок жизни refresh-токена
     'ROTATE_REFRESH_TOKENS': True,
 }
+
+DJOSER = {
+    'LOGIN_FIELD': 'email',
+    'USER_CREATE_PASSWORD_RETYPE': True,
+    'SERIALIZERS': {},
+}
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

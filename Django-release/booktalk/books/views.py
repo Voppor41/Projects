@@ -1,14 +1,13 @@
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions, viewsets
 from .models import Book
-from .serializers import BookSerializer, BookDetaileSerializer
+from .serializers import BookSerializer
 
 # Create your views here.
-class BookListCreateView(generics.ListCreateAPIView):
+class BookViewSet(viewsets.ModelViewSet):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
-class BookDetailView(generics.RetrieveAPIView):
+"""class BookDetailView(generics.RetrieveAPIView):
     queryset = Book.objects.all()
-    serializer_class = BookDetaileSerializer
+    serializer_class = BookDetaileSerializer"""
 
