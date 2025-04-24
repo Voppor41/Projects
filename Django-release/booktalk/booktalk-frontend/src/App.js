@@ -8,6 +8,7 @@ import Register from './components/Register';
 
 function App() {
     const [token, setToken] = useState(localStorage.getItem("access"));
+    const [user, setUser] = useState(null);
 
     useEffect(() => {
         const storedToken = localStorage.getItem("access");
@@ -35,6 +36,7 @@ function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/post/:id" element={<PostDetailPage />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/login" element={<Login onLogin={setUser} />} />
             </Routes>
         </Router>
     );

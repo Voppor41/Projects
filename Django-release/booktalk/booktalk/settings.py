@@ -34,11 +34,13 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'djoser',
     'social_django',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -150,11 +152,12 @@ SIMPLE_JWT = {
 }
 
 DJOSER = {
-    'LOGIN_FIELD': 'email',
     'USER_CREATE_PASSWORD_RETYPE': True,
-    'SERIALIZERS': {},
+    'LOGIN_FIELD': 'email',
+    'SERIALIZERS': {
+        'user_create': 'djoser.serializers.UserCreateSerializer',
+    }
 }
-
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -162,3 +165,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 ACCOUNT_EMAIL_VERIFICATION = "optional"
 ACCOUNT_LOGIN_METHODS = {"email"}
 ACCOUNT_SIGNUP_FIELDS = ["email*", "username*", "password1*", "password2*"]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]

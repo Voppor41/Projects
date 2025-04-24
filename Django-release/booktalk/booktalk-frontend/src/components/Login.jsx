@@ -1,42 +1,37 @@
 import React, { useState } from 'react';
-import API from '../api/axios';
+import axios from 'axios';
 
-function Login({ setToken }) {
-    const [username, setUsername] = useState('');
+function Login({ onLogin }) {
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async e => {
         e.preventDefault();
         try {
-            const res = await API.post('auth/jwt/create/', {
-                username,
+            const response = await axios.post('http://localhost:8000/auth/jwt/create/', {
+                email,
                 password
             });
-            localStorage.setItem('access', res.data.access);
-            localStorage.setItem('refresh', res.data.refresh);
-            setToken(res.data.access);
-            alert('Успешный вход!');
+
+            localStorage.setItem('access', response.data.access);
+            localStorage.setItem('refresh', response.data.refresh);
+
+            const userResponse = await axios.get('http://localhost:8000/auth/users/me/', {
+                headers: {
+                    Authorization: `Bearer ${response.data.access}`
+                }
+            });
+
+            onLogin(userResponse.data);
         } catch (error) {
-            alert('Ошибка входа!');
-            console.error(error);
+            alert("Неверный логин или пароль");
         }
     };
 
     return (
         <form onSubmit={handleSubmit}>
-            <h2>Вход</h2>
-            <input
-                type="text"
-                placeholder="Имя пользователя"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-            />
-            <input
-                type="password"
-                placeholder="Пароль"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
+            <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Email" />
+            <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Пароль" />
             <button type="submit">Войти</button>
         </form>
     );
